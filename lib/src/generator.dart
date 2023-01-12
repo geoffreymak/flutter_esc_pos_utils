@@ -24,7 +24,9 @@ class Generator {
 
   // ************************ Internal helpers ************************
   int _getMaxCharsPerLine(PosFontType? font) {
-    if (_paperSize == PaperSize.mm58) {
+    if (_paperSize == PaperSize.mm44) {
+      return (font == null || font == PosFontType.fontA) ? 32 : 42;
+    } else if (_paperSize == PaperSize.mm58) {
       return (font == null || font == PosFontType.fontA) ? 32 : 42;
     } else if (_paperSize == PaperSize.mm72) {
       return (font == null || font == PosFontType.fontA) ? 42 : 56;
@@ -581,7 +583,9 @@ class Generator {
     Image image;
     if (!isDoubleDensity) {
       int size = 558 ~/ 2;
-      if (_paperSize == PaperSize.mm58) {
+      if (_paperSize == PaperSize.mm44) {
+        size = 310 ~/ 2;
+      } else if (_paperSize == PaperSize.mm58) {
         size = 375 ~/ 2;
       } else if (_paperSize == PaperSize.mm72) {
         size = 503 ~/ 2;
